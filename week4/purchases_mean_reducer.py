@@ -14,20 +14,20 @@ oldKey = None
 # We need to write the result to standard output, separated by a tab
 
 for line in sys.stdin:
-    data_mapped = line.strip().split("\t")
-    if len(data_mapped) != 2:
+    dataMapped = line.strip().split("\t")
+    if len(dataMapped) != 2:
         continue
 
-    this_key, this_cost = data_mapped
+    thisKey, thisCost = dataMapped
     if oldKey and thisKey != oldKey:
         print oldKey, "\t", sum/counter
         oldKey = thisKey
         counter = 0
-        mean = 0
+        sum = 0
 
     oldKey = thisKey
     counter += 1
-    mean += this_cost
+    sum += float(thisCost)
 
 if oldKey:
     print oldKey, "\t", sum/counter
