@@ -18,6 +18,10 @@ def find_max_vals_indeces(values_list):
             max_vals_indeces.append(index)
     return max_vals_indeces
 
+def print_result(key, hours_list):
+    for hour in  find_max_vals_indeces(hours_list):
+        print "{0}\t{1}".format(key, hour)
+
 old_key = None
 hours_freq = [0] * 24 # used to store hour frequences
 
@@ -29,9 +33,7 @@ for line in sys.stdin:
     this_key, this_hour = data_mapped    
 
     if old_key and old_key != this_key:
-        for hour in  find_max_vals_indeces(hours_freq):
-            print "{0}\t{1}".format(old_key, hour)
-        
+        print_result(old_key, hours_freq)
         old_key = this_key
         hours_freq = [0] * 24
 
@@ -39,6 +41,5 @@ for line in sys.stdin:
     hours_freq[int(this_hour)] += 1
 
 if old_key:
-    for hour in  find_max_vals_indeces(hours_freq):
-        print "{0}\t{1}".format(old_key, hour)  
+    print_result(old_key, hours_freq)  
 
