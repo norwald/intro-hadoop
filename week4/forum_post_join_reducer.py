@@ -60,6 +60,6 @@ if old_key:
         else:
             user_rating = ''
         writer.writerow([post[0], post[2], post[3], post[4], user_rating])
-    if len(cachedPostsValues) == 0:
-        writer.writerow(["", "", "", "", "", cachedUserValues[2]])
+    if len(cached_posts_values) == 0:
+        writer.writerow(["", "", "", "", "", cached_user_values[2]])
 
