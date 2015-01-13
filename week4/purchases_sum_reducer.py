@@ -5,7 +5,6 @@ import sys
 sum = 0 
 old_key = None
 
-
 # Format of each line is:
 # weekday\tcost
 #

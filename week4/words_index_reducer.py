@@ -28,5 +28,5 @@ for line in sys.stdin:
     key_list.add(this_val)
 
 if old_key != None:
-    print old_key, "\t", sorted(key_list, key = int)
+    print old_key, "\t", sorted(key_list, key=int)
 
