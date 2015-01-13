@@ -21,7 +21,6 @@ for line in sys.stdin:
     
     if old_key and old_key != this_key:
         print old_key, "\t", sorted(key_list, key=int)
-        old_key = this_key;
         key_list = set()
 
     old_key = this_key

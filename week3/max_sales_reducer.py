@@ -19,7 +19,6 @@ for line in sys.stdin:
 
     if old_key and old_key != this_key:
         print old_key, "\t", sales_max
-        old_key = this_key;
         sales_max = 0
 
     old_key = this_key

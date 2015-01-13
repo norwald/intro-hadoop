@@ -20,7 +20,6 @@ for line in sys.stdin:
     this_key, this_cost = data_mapped
     if old_key and this_key != old_key:
         print old_key, "\t", sum
-        old_key = this_key
         sum = 0
 
     old_key = this_key

@@ -41,7 +41,6 @@ for line in reader:
         if len(cached_posts_values) == 0:
             writer.writerow(["", "", "", "", cached_user_values[2]])
 
-        old_key = this_key
         cached_user_values = None
         cached_posts_values = []
 

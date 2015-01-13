@@ -34,7 +34,6 @@ for line in sys.stdin:
 
     if old_key and old_key != this_key:
         print_result(old_key, hours_freq)
-        old_key = this_key
         hours_freq = [0] * 24
 
     old_key = this_key
