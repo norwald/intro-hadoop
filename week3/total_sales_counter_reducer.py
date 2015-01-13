@@ -2,8 +2,8 @@
 
 import sys
 
-salesTotal = 0
-salesCounter = 0
+sales_total = 0
+sales_counter = 0
 
 # Loop around the data
 # It will be in the format key\tval
@@ -15,10 +15,10 @@ for line in sys.stdin:
         # Something has gone wrong. Skip this line.
         continue
 
-    thisKey, thisSale = data_mapped
+    this_key, this_sale = data_mapped
 
-    salesTotal += float(thisSale)
-    salesCounter += 1
+    sales_total += float(this_sale)
+    sales_counter += 1
 
-print salesTotal, "\t", salesCounter
+print sales_total, "\t", sales_counter
 

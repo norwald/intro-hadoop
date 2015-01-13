@@ -2,8 +2,8 @@
 
 import sys
 
-salesMax = 0
-oldKey = None
+sales_max = 0
+old_key = None
 
 # Loop around the data
 # It will be in the format key\tval
@@ -15,17 +15,17 @@ for line in sys.stdin:
         # Something has gone wrong. Skip this line.
         continue
 
-    thisKey, thisSale = data_mapped
+    this_key, this_sale = data_mapped
 
-    if oldKey and oldKey != thisKey:
-        print oldKey, "\t", salesMax
-        oldKey = thisKey;
-        salesMax = 0
+    if old_key and old_key != this_key:
+        print old_key, "\t", sales_max
+        old_key = this_key;
+        sales_max = 0
 
-    oldKey = thisKey
-    if float(thisSale) > float(salesMax):
-        salesMax = thisSale
+    old_key = this_key
+    if float(this_sale) > float(sales_max):
+        sales_max = this_sale
 
-if oldKey != None:
-    print oldKey, "\t", salesMax
+if old_key != None:
+    print old_key, "\t", sales_max
 
