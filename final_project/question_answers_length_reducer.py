@@ -23,7 +23,7 @@ for line in sys.stdin:
         if answers_count > 0:
             average_len = float(answers_tot_len / answers_count)
         else:
-             average_len = 0
+            average_len = 0
         print "{0}\t{1}\t{2}".format(old_key, question_len, average_len)
         question_len = 0
         answers_tot_len = 0
@@ -40,6 +40,6 @@ if old_key:
     if answers_count > 0:
         average_len = float(answers_tot_len / answers_count)
     else:
-         average_len = 0
+        average_len = 0
     print "{0}\t{1}\t{2}".format(old_key, question_len, average_len)
 
