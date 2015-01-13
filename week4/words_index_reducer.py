@@ -2,8 +2,8 @@
 
 import sys
 
-keyList = set()
-oldKey = None
+key_list = set()
+old_key = None
 
 # loop around the data
 # it will be in the format key\tval
@@ -15,18 +15,18 @@ for line in sys.stdin:
         # Something has gone wrong. Skip this line.
         continue
 
-    thisKey, thisVal = data_mapped
-    if thisVal == 'id':
+    this_key, this_val = data_mapped
+    if this_val == 'id':
         continue
     
-    if oldKey and oldKey != thisKey:
-        print oldKey, "\t", sorted(keyList, key=int)
-        oldKey = thisKey;
-        keyList = set()
+    if old_key and old_key != this_key:
+        print old_key, "\t", sorted(key_list, key=int)
+        old_key = this_key;
+        key_list = set()
 
-    oldKey = thisKey
-    keyList.add(thisVal)
+    old_key = this_key
+    key_list.add(this_val)
 
-if oldKey != None:
-    print oldKey, "\t", sorted(keyList, key = int)
+if old_key != None:
+    print old_key, "\t", sorted(key_list, key = int)
 

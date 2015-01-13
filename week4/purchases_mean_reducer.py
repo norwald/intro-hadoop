@@ -4,7 +4,7 @@ import sys
 
 counter = 0
 sum = 0 
-oldKey = None
+old_key = None
 
 
 # Format of each line is:
@@ -14,21 +14,22 @@ oldKey = None
 # We need to write the result to standard output, separated by a tab
 
 for line in sys.stdin:
-    dataMapped = line.strip().split("\t")
-    if len(dataMapped) != 2:
+    data_mapped = line.strip().split("\t")
+    # skip invalid record
+    if len(data_mapped) != 2:
         continue
 
-    thisKey, thisCost = dataMapped
-    if oldKey and thisKey != oldKey:
-        print oldKey, "\t", sum/counter
-        oldKey = thisKey
+    this_key, this_cost = data_mapped
+    if old_key and this_key != old_key:
+        print old_key, "\t", sum/counter
+        old_key = this_key
         counter = 0
         sum = 0
 
-    oldKey = thisKey
+    old_key = this_key
     counter += 1
-    sum += float(thisCost)
+    sum += float(this_cost)
 
-if oldKey:
-    print oldKey, "\t", sum/counter
+if old_key:
+    print old_key, "\t", sum/counter
 

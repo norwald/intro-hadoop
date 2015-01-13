@@ -3,7 +3,7 @@
 import sys
 
 sum = 0 
-oldKey = None
+old_key = None
 
 
 # Format of each line is:
@@ -13,19 +13,20 @@ oldKey = None
 # We need to write the result to standard output, separated by a tab
 
 for line in sys.stdin:
-    dataMapped = line.strip().split("\t")
-    if len(dataMapped) != 2:
+    data_mapped = line.strip().split("\t")
+    # skip invalid line
+    if len(data_mapped) != 2:
         continue
 
-    thisKey, thisCost = dataMapped
-    if oldKey and thisKey != oldKey:
-        print oldKey, "\t", sum
-        oldKey = thisKey
+    this_key, this_cost = data_mapped
+    if old_key and this_key != old_key:
+        print old_key, "\t", sum
+        old_key = this_key
         sum = 0
 
-    oldKey = thisKey
-    sum += float(thisCost)
+    old_key = this_key
+    sum += float(this_cost)
 
-if oldKey:
-    print oldKey, "\t", sum
+if old_key:
+    print old_key, "\t", sum
 

@@ -3,7 +3,7 @@
 import sys
 
 counter = 0
-oldKey = None
+old_key = None
 
 # loop around the data
 # it will be in the format key\tval
@@ -15,16 +15,16 @@ for line in sys.stdin:
         # Something has gone wrong. Skip this line.
         continue
 
-    thisKey, thisCounter = data_mapped
+    this_key, this_counter = data_mapped
 
-    if oldKey and oldKey != thisKey:
-        print oldKey, "\t", counter
-        oldKey = thisKey;
+    if old_key and old_key != this_key:
+        print old_key, "\t", counter
+        old_key = this_key;
         counter = 0
 
-    oldKey = thisKey
+    old_key = this_key
     counter += 1
 
-if oldKey != None:
-    print oldKey, "\t", counter
+if old_key != None:
+    print old_key, "\t", counter
 
