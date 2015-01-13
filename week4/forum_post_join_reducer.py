@@ -16,6 +16,19 @@ cached_posts_values = []
 # we want to join the forum posts with their author reputation by user_id.
 # we will write to standard output the user_id, table identifier, other table details
 
+def print_results(user_values, posts_values):
+   # the user has no posts 
+   if len(posts_values) == 0:
+        writer.writerow(["", "", "", "", user_values[2]])
+   else:
+       for post in posts_values:
+           # a user rating exists
+           if user_values:
+               user_rating = user_values[2]
+           else:
+               user_rating = ''
+           writer.writerow([post[0], post[2], post[3], post[4], user_rating])   
+
 reader = csv.reader(sys.stdin, delimiter = '\t', quotechar = '"')
 writer = csv.writer(sys.stdout, delimiter ='\t', quotechar = '"', quoting=csv.QUOTE_ALL)
 
@@ -29,18 +42,7 @@ for line in reader:
     
     # new key group
     if old_key and this_key != old_key:
-        for post in cached_posts_values:
-            # a user rating exists
-            if cached_user_values:
-                user_rating = cached_user_values[2]
-            else:
-                user_rating = ''
-            writer.writerow([post[0], post[2], post[3], post[4], user_rating])
-        
-        # there are no posts for the user
-        if len(cached_posts_values) == 0:
-            writer.writerow(["", "", "", "", cached_user_values[2]])
-
+        print_results(cached_user_values, cached_posts_values)
         cached_user_values = None
         cached_posts_values = []
 
@@ -53,12 +55,5 @@ for line in reader:
 
 # end of stream
 if old_key:
-    for post in cached_posts_values:
-        if cached_user_values:
-            user_rating = cached_user_values[2]
-        else:
-            user_rating = ''
-        writer.writerow([post[0], post[2], post[3], post[4], user_rating])
-    if len(cached_posts_values) == 0:
-        writer.writerow(["", "", "", "", "", cached_user_values[2]])
+    print_results(cached_user_values, cached_posts_values)
 

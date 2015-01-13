@@ -17,6 +17,9 @@ writer = csv.writer(sys.stdout, delimiter ='\t', quotechar = '"', quoting=csv.QU
 
 for line in reader:
     id = line[0]
+    # skip header row
+    if id == "user_ptr_id" or line[3] == "author_id":
+        continue
     # the line comes from the Users table
     if len(line) == 5 and line[1]:
         writer.writerow([id, 'U', line[1]])
