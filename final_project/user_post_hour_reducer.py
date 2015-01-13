@@ -18,11 +18,11 @@ def find_max_vals_indeces(values_list):
     return max_vals_indeces
 
 old_key = None
-hours_freq = [0] * 24
+hours_freq = [0] * 24 # used to store hour frequences
 
 for line in sys.stdin:
     data_mapped = line.strip().split("\t")
-    # skip wring lines
+    # skip wrong lines
     if len(data_mapped) != 2:
         continue
     this_key, this_hour = data_mapped    
