@@ -5,6 +5,7 @@ import sys
 # the input data is will be a tab delimited tupple user_id->hour
 # we want to find the most common hour for each user_id
 
+# function returning indeces of the most max values in the list
 def find_max_vals_indeces(values_list):
     max_val = 0
     max_vals_indeces = []
