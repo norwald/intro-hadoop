@@ -11,7 +11,7 @@ cached_posts_values = []
 
 
 # input data will be csv style and will come in two different formats:
-#     user_id, table_type, reputation
+#     user_id, table_type, user_rating
 #     user_id, table_type, post_id, title, tagnames
 # we want to join the forum posts with their author reputation by user_id.
 # we will write to standard output the user_id, table identifier, other table details
@@ -19,7 +19,8 @@ cached_posts_values = []
 def print_results(user_values, posts_values):
    # the user has no posts 
    if len(posts_values) == 0:
-        writer.writerow(["", "", "", "", user_values[2]])
+       user_rating = user_values[2] 
+       writer.writerow(["", "", "", "", user_rating])
    else:
        for post in posts_values:
            # a user rating exists
@@ -27,7 +28,8 @@ def print_results(user_values, posts_values):
                user_rating = user_values[2]
            else:
                user_rating = ''
-           writer.writerow([post[0], post[2], post[3], post[4], user_rating])   
+           user_id, post_id, title, tagnames = [post[index] for index in [0, 2, 3, 4]]
+           writer.writerow([user_id, post_id, title, tagnames, user_rating])   
 
 reader = csv.reader(sys.stdin, delimiter = '\t', quotechar = '"')
 writer = csv.writer(sys.stdout, delimiter ='\t', quotechar = '"', quoting=csv.QUOTE_ALL)
