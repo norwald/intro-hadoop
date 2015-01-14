@@ -11,6 +11,12 @@ question_len = 0
 answers_tot_len = 0
 answers_count = 0
 
+def find_average(sum, count):
+    if count == 0:
+        return float(0) 
+    else:
+        return float(sum/count)
+
 for line in sys.stdin:
     mapped_data = line.strip().split("\t")
     # skip wrong line
@@ -20,10 +26,7 @@ for line in sys.stdin:
     this_key, this_code, this_len = mapped_data
     
     if old_key and old_key != this_key:
-        if answers_count > 0:
-            average_len = float(answers_tot_len / answers_count)
-        else:
-            average_len = 0
+        average_len = find_average(answers_tot_len, answers_count)
         print "{0}\t{1}\t{2}".format(old_key, question_len, average_len)
         question_len = 0
         answers_tot_len = 0
@@ -37,9 +40,6 @@ for line in sys.stdin:
         answers_count += 1
 
 if old_key:
-    if answers_count > 0:
-        average_len = float(answers_tot_len / answers_count)
-    else:
-        average_len = 0
+    average_len = find_average(answers_tot_len, answers_count)
     print "{0}\t{1}\t{2}".format(old_key, question_len, average_len)
 
